@@ -26,7 +26,7 @@ class DrawableObject {
 
     drawFrame(ctx) {
 
-        if (this instanceof Character || this instanceof Chicken || this instanceof Bottle || this instanceof Coin) {
+        if (this instanceof Character || this instanceof Chicken || this instanceof Bottle || this instanceof Coin || this instanceof ThrowBottle) {
 
 
             ctx.beginPath();

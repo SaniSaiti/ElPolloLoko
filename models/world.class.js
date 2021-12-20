@@ -10,6 +10,10 @@ class World {
     coinbar = new Coins();
     throwBottle = [];
     shot = 0;
+    //endbos = new Endboss();
+    endbos = level1.enemies[level1.enemies.lenth - 1];
+
+
 
 
 
@@ -22,6 +26,7 @@ class World {
         this.setWorld();
         this.checkCollision();
 
+
     }
 
     setWorld() {
@@ -31,6 +36,8 @@ class World {
     checkCollision() {
         setInterval(() => {
 
+
+
             this.checkThrowBottle();
 
             this.checkCollisionWithCoins();
@@ -39,19 +46,19 @@ class World {
 
             this.checkCollisionWithChicken();
 
+            this.checkCollisionBottleWithChicken();
 
-        }, 200);
+
+
+        }, 40);
     }
 
     checkThrowBottle() {
-        if (this.keyboard.d && this.shot > 0) {
-            let bot = new ThrowBottle(this.character.x + 100, this.character.y + 100);
+        if (this.keyboard.d /*&& this.shot > 0*/ ) {
+            let bot = new ThrowBottle(this.character.x - 100, this.character.y + 100);
             this.throwBottle.push(bot);
             this.shot -= 20;
             this.bottlebar.setPercentage(this.shot);
-            // this.bottlebar.botal -= 20;
-            // console.log('botal percent nach schuss', this.bottlebar.percentage);
-            // console.log('charakter botal nach schuss', this.character.botal);
             console.log('shot nach schuss', this.shot);
         }
     }
@@ -74,8 +81,6 @@ class World {
                 this.shot += 20;
                 this.bottlebar.setPercentage(this.shot);
                 this.level.bottles.splice(this.level.bottles.indexOf(botell), 1);
-                //  console.log('charakter', this.character.botal);
-                // console.log('bottle percentage', this.bottlebar.percentage);
                 console.log('shot', this.shot);
             }
         })
@@ -90,6 +95,26 @@ class World {
             }
         });
     };
+
+
+    checkCollisionBottleWithChicken() {
+        this.level.enemies.forEach((enemy) => {
+            this.throwBottle.forEach((bot) => {
+                if (bot.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt()) {
+                    enemy.hit();
+                    console.log('eneemy hit')
+                    if (enemy.isDead()) {
+                        setTimeout(() => {
+                            this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1)
+                        }, 2000);
+
+                    }
+                }
+
+            });
+        });
+    }
+
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -111,6 +136,9 @@ class World {
         this.addObjectToMap(this.level.bottles);
         this.addObjectToMap(this.level.coins);
         this.addObjectToMap(this.throwBottle);
+
+
+
 
 
         this.ctx.translate(-this.camera_x, 0);

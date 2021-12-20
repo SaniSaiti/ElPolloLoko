@@ -5,6 +5,9 @@ class Endboss extends MovableObject {
     width = 250;
     y = 70;
 
+
+
+
     imagesWalking = [
 
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G5.png',
@@ -18,22 +21,92 @@ class Endboss extends MovableObject {
     ];
 
 
-    constructor() {
-        super().loadImage(this.imagesWalking[0]);
-        this.loadImages(this.imagesWalking);
+    imagesHurt = [
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G21.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G22.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G23.png',
 
-        this.x = 2400; // Zahl zwischen 200 und 700
+    ];
+
+
+    imgagesDead = [
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G24.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G25.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G26.png',
+
+    ];
+
+
+
+
+    constructor() {
+        super().loadImage('img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G5.png');
+        this.loadImages(this.imagesWalking);
+        this.loadImages(this.imgagesDead);
+        this.loadImages(this.imagesHurt);
         this.animate();
+        this.x = 2400;
+
+
+
 
     }
 
     animate() {
-        setInterval(() => {
-            this.playAnimation(this.imagesWalking);
 
-        }, 100);
+        setInterval(() => {
+
+            if (this.isDead()) {
+                this.playAnimation(this.imgagesDead);
+            } else if (this.isHurt()) {
+                this.playAnimation(this.imagesHurt);
+            } else {
+                this.playAnimation(this.imagesWalking);
+            }
+        }, 50);
+
+
+        // setInterval(() => {
+
+        //     if (this.energy < 30) {
+        //         this.playAnimation(this.imgagesDead);
+        //     } else if (this.energy > 60) {
+        //         this.playAnimation(this.imagesHurt);
+        //     } else if (this.energy > 80) {
+        //         this.playAnimation(this.imagesWalking);
+        //     }
+
+
+        // }, 100);
+
+
+
+        // setInterval(() => {
+        //     if (this.energy > 90) {
+        //         this.playAnimation(this.imagesWalking);
+        //         //  console.log('lalla1', this.energy)
+        //     } else if (this.energy < 90) {
+        //         this.playAnimation(this.imagesHurt);
+        //         //  console.log('lalla2', this.energy)
+        //     } else if (this.energy < 20) {
+        //         this.playAnimation(this.imgagesDead);
+        //         //  console.log('lalla3', this.energy)
+        //     }
+
+
+
+        // }, 100);
+
+
+        // 
+
+
+
 
 
     }
+
+
+
 
 }

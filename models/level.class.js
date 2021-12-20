@@ -4,6 +4,8 @@ class Level {
     bottles;
     coins;
     backgroundsObject;
+
+
     levelEnd_X = 2250;
 
 
@@ -13,5 +15,8 @@ class Level {
         this.backgroundsObject = backgroundsObject;
         this.bottles = bottles;
         this.coins = coins;
+
+
+
     }
 }

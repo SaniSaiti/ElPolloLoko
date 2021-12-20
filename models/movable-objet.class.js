@@ -10,6 +10,7 @@ class MovableObject extends DrawableObject {
     lastHit = 0;
 
 
+
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -48,14 +49,17 @@ class MovableObject extends DrawableObject {
         }
     }
 
-
-    // Widh Bottle hit
-    hitBottle() {
-        this.botal += 20;
-        if (this.botal > 100) {
-            this.botal = 100;
+    /*
+        // Widh Bottle hit
+        hitBottle() {
+            this.chickenEnergi -= 20;
+            if (this.chickenEnergi < 0) {
+                this.chickenEnergi = 0;
+            } else {
+                this.lastHit = new Date().getTime();
+            }
         }
-    }
+    */
 
     // With Chicken hit
     hit() {
@@ -68,6 +72,7 @@ class MovableObject extends DrawableObject {
         }
 
     }
+
 
     isDead() {
         return this.energy == 0;

@@ -2,6 +2,7 @@ class Chicken extends MovableObject {
 
     y = 370;
     height = 70;
+    energy = 5;
 
 
 
@@ -22,6 +23,7 @@ class Chicken extends MovableObject {
         this.speed = 0.15 + Math.random() * 0.5;
 
         this.animate();
+        this.energy = this.energy;
 
     }
 
