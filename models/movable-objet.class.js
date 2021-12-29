@@ -11,6 +11,7 @@ class MovableObject extends DrawableObject {
 
 
 
+
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -73,9 +74,9 @@ class MovableObject extends DrawableObject {
 
     }
 
-
     isDead() {
         return this.energy == 0;
+
     }
 
 
@@ -111,4 +112,17 @@ class MovableObject extends DrawableObject {
         this.speedY = 30;
     }
 
+    constructor(name) {
+        super();
+        if (name != undefined) {
+            let moveOb = WorldObject().filter(em => em.name == name)[0]
+            super.loadImage(moveOb.img);
+            this.loadImages(moveOb.images);
+            this.x = moveOb.x;
+            this.y = moveOb.y;
+            this.height = moveOb.height;
+        }
+        //200 + Math.random() * 2200; // Zahl zwischen 200 und 700
+        //this.speed = 0.15 + Math.random() * 0.5;
+    }
 }

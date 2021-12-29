@@ -64,46 +64,6 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.imagesWalking);
             }
         }, 50);
-
-
-        // setInterval(() => {
-
-        //     if (this.energy < 30) {
-        //         this.playAnimation(this.imgagesDead);
-        //     } else if (this.energy > 60) {
-        //         this.playAnimation(this.imagesHurt);
-        //     } else if (this.energy > 80) {
-        //         this.playAnimation(this.imagesWalking);
-        //     }
-
-
-        // }, 100);
-
-
-
-        // setInterval(() => {
-        //     if (this.energy > 90) {
-        //         this.playAnimation(this.imagesWalking);
-        //         //  console.log('lalla1', this.energy)
-        //     } else if (this.energy < 90) {
-        //         this.playAnimation(this.imagesHurt);
-        //         //  console.log('lalla2', this.energy)
-        //     } else if (this.energy < 20) {
-        //         this.playAnimation(this.imgagesDead);
-        //         //  console.log('lalla3', this.energy)
-        //     }
-
-
-
-        // }, 100);
-
-
-        // 
-
-
-
-
-
     }
 
 

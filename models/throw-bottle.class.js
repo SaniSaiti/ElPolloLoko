@@ -12,11 +12,12 @@ class ThrowBottle extends MovableObject {
 
     ];
 
-    constructor(x, y) {
+    constructor(x, y, otherDirection) {
         super().loadImage('img/6.botella/1.Marcador.png');
         this.loadImages(this.imagesbottels);
         this.x = x;
         this.y = y;
+        this.otherDirection = otherDirection;
         this.throw();
 
     }
@@ -27,7 +28,12 @@ class ThrowBottle extends MovableObject {
         this.speedY = 30;
         this.applyGravity();
         setInterval(() => {
-            this.x += 10;
+            if (this.otherDirection) {
+                this.x += 10;
+            } else {
+                this.x -= 10;
+            }
+
         }, 20);
     }
 

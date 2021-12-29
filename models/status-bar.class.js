@@ -26,7 +26,23 @@ class Status extends DrawableObject {
         } else {
             return 0;
         }
+
     }
+
+    constructor(name) {
+        super();
+        let bar = StatusBars.filter(b => b.name == name)[0];
+        this.image = bar.images;
+        this.loadImage(bar.img);
+        this.loadImages(bar.images);
+        this.x = bar.x;
+        this.y = bar.y;
+        this.width = bar.width;
+        this.height = bar.height;
+        this.setPercentage(bar.percentage);
+
+    }
+
 
 
 

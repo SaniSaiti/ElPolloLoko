@@ -2,8 +2,79 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url("img/9.Intro _ Outro Image/Start Screen/cactus-g558a852cf_1280.png");
 }
 
 canvas {
     background-color: black;
+    display: block;
+}
+
+.playlogic {
+    background-color: lightgray;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 45px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+h2 {
+    cursor: pointer;
+}
+
+.leftPosition {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+.img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.d-none {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+.imgClass {
+    object-fit: contain;
+    width: 720px;
+    height: 480px;
+}
+
+
+/*---------Smartphones--------*/
+
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+    #intro-img {
+        width: 100%;
+    }
+    .menu {
+        padding-bottom: 65px;
+    }
+}
+
+
+/*---------Smartphones--------*/
+
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
 }

@@ -7,13 +7,13 @@ let keyboard = new Keyboard();
 function init() {
 
     canvas = document.getElementById('canvas');
-
+    level1 = getLevel1();
     world = new World(canvas, keyboard);
 
 
     console.log('My Character', world.character);
 
-
+    return 0;
 }
 
 
@@ -69,7 +69,49 @@ window.addEventListener('keyup', (event) => {
         keyboard.d = false;
     }
 
-
-
-
 });
+
+
+function starGame2() {
+    document.getElementById('gameover').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
+    starGame();
+    // document.getElementById('img').classList.add('d-none'); 
+
+
+
+}
+
+
+function starGame() {
+    document.getElementById('img').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
+
+
+    init();
+
+}
+
+function fullscreen() {
+    canvas.requestFullscreen();
+
+}
+
+info = false;
+
+function playlogicClick() {
+
+    if (info) {
+        document.getElementById('playlogic').classList.add('d-none');
+        info = false;
+
+    } else {
+        document.getElementById('playlogic').classList.remove('d-none');
+        info = true;
+
+    }
+
+
+
+
+}

@@ -16,6 +16,8 @@ class Bottle extends MovableObject {
 
 
     constructor() {
+        console.log(WorldObject());
+        console.log(WorldObject());
         super().loadImage('img/6.botella/1.Marcador.png');
         this.loadImages(this.imagesbottle);
         this.x = 200 + Math.random() * 2200; // Zahl zwischen 200 und 700

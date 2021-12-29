@@ -5,15 +5,17 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    lifebar = new Life();
-    bottlebar = new Bottels();
-    coinbar = new Coins();
+    lifebar = new Status("LifeBar");
+    bottlebar = new Status("BottlesBar");
+    coinbar = new Status("CoinsBar");
     throwBottle = [];
     shot = 0;
+    collisionInterval;
+
     //endbos = new Endboss();
     endbos = level1.enemies[level1.enemies.lenth - 1];
 
-
+    hit_Sound = new Audio('audio/hit.mp3');
 
 
 
@@ -34,7 +36,7 @@ class World {
     }
 
     checkCollision() {
-        setInterval(() => {
+        this.collisionInterval = setInterval(() => {
 
 
 
@@ -55,7 +57,7 @@ class World {
 
     checkThrowBottle() {
         if (this.keyboard.d /*&& this.shot > 0*/ ) {
-            let bot = new ThrowBottle(this.character.x - 100, this.character.y + 100);
+            let bot = new ThrowBottle(this.character.x + 50, this.character.y + 140, !this.character.otherDirection);
             this.throwBottle.push(bot);
             this.shot -= 20;
             this.bottlebar.setPercentage(this.shot);
@@ -69,7 +71,7 @@ class World {
                 this.character.hitCoin();
                 this.coinbar.setPercentage(this.character.coin);
                 this.level.coins.splice(this.level.coins.indexOf(coin), 1);
-
+                this.hit_Sound.play();
             }
         })
     };
@@ -77,11 +79,10 @@ class World {
     checkCollisionWithBottel() {
         this.level.bottles.forEach((botell) => {
             if (this.character.isColliding(botell)) {
-                // this.character.hitBottle();
                 this.shot += 20;
                 this.bottlebar.setPercentage(this.shot);
                 this.level.bottles.splice(this.level.bottles.indexOf(botell), 1);
-                console.log('shot', this.shot);
+                this.hit_Sound.play();
             }
         })
     };
@@ -93,6 +94,11 @@ class World {
                 this.character.hit();
                 this.lifebar.setPercentage(this.character.energy);
             }
+            if (this.character.isDead()) {
+                document.getElementById('gameover').classList.remove('d-none');
+                document.getElementById('canvas').classList.add('d-none');
+                clearInterval(this.collisionInterval);
+            }
         });
     };
 
@@ -102,17 +108,19 @@ class World {
             this.throwBottle.forEach((bot) => {
                 if (bot.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt()) {
                     enemy.hit();
-                    console.log('eneemy hit')
                     if (enemy.isDead()) {
                         setTimeout(() => {
                             this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1)
                         }, 2000);
-
                     }
                 }
 
             });
         });
+
+
+
+
     }
 
 
@@ -136,9 +144,6 @@ class World {
         this.addObjectToMap(this.level.bottles);
         this.addObjectToMap(this.level.coins);
         this.addObjectToMap(this.throwBottle);
-
-
-
 
 
         this.ctx.translate(-this.camera_x, 0);
