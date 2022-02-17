@@ -1,3 +1,8 @@
+/**
+ * class for all objects on the canvas that are drawn.
+ */
+
+
 class DrawableObject {
     img;
     imageCache = [];
@@ -10,6 +15,10 @@ class DrawableObject {
 
 
 
+    /**
+     * this method defines the images for the different objects
+     * @param {sting} path path to the images for the different drawn objects on the canvas
+     */
 
     loadImage(path) {
         this.img = new Image(); // this.img == gleich wie document.getElementbyId('image') <img id='image' src>
@@ -18,11 +27,18 @@ class DrawableObject {
     }
 
 
+    /**
+     * draws objects on the canvas with a specific image, x-coordinate, y-coordinate, width and height
+     * @param {*} ctx I have no Idea what that is
+     */
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
-
+    /**
+     * draws frame around specific objects. This is just for development and not in the real game
+     * @param {*} ctx I have no idea what that is
+     */
 
     drawFrame(ctx) {
 

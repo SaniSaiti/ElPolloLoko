@@ -1,3 +1,7 @@
+/**
+ * defines all objects with the ability to move around the canvas
+ */
+
 class MovableObject extends DrawableObject {
 
     speed = 0.15;
@@ -8,10 +12,11 @@ class MovableObject extends DrawableObject {
     botal = 0;
     coin = 0;
     lastHit = 0;
+    bosenergy = 100;
 
-
-
-
+    /**
+     * sets the ability of gravity to objects
+     */
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
@@ -21,6 +26,11 @@ class MovableObject extends DrawableObject {
         }, 1000 / 25);
     }
 
+
+    /**
+     * tells if an object if above ground or not like jumping
+     * @returns true or y < 150
+     */
     isAboveGround() {
         if (this instanceof ThrowBottle) {
             return true;
@@ -30,19 +40,21 @@ class MovableObject extends DrawableObject {
 
     }
 
+    /**
+     * tells if a movableObject is colliding with an other object
+     * @param {??} mo 
+     * @returns true or false
+     */
 
-
-
-    // is Colliding widh Chicken
     isColliding(mo) {
         return this.x + this.width > mo.x &&
             this.y + this.height > mo.y &&
-            this.x < mo.x &&
-            this.y < mo.y + mo.height
+            this.x < mo.x && this.y < mo.y + mo.height;
     }
 
-
-    // Widh Coin hit
+    /**
+     * tells if an charcter was colliding with an other Coins
+     */
     hitCoin() {
         this.coin += 20;
         if (this.coin > 100) {
@@ -50,42 +62,43 @@ class MovableObject extends DrawableObject {
         }
     }
 
-    /*
-        // Widh Bottle hit
-        hitBottle() {
-            this.chickenEnergi -= 20;
-            if (this.chickenEnergi < 0) {
-                this.chickenEnergi = 0;
+
+
+    /**
+     * tells if an object was colliding with an other object
+     */
+    hit() {
+            this.energy -= 5;
+            if (this.energy < 0) {
+                this.energy = 0;
+
             } else {
                 this.lastHit = new Date().getTime();
             }
+
         }
-    */
-
-    // With Chicken hit
-    hit() {
-        this.energy -= 5;
-        if (this.energy < 0) {
-            this.energy = 0;
-
-        } else {
-            this.lastHit = new Date().getTime();
-        }
-
-    }
-
+        /**
+         * if the energy of an object is equel or below 0 then the character is dead and the energy is set to 0
+         * @returns energy==0
+         */
     isDead() {
         return this.energy == 0;
 
     }
 
-
+    /**
+     * sets a time between the last hit and the current time
+     * @returns timepasses < 1
+     */
     isHurt() {
         let timepasse = new Date().getTime() - this.lastHit; // Differenc in ms
         timepasse = timepasse / 1000; // Differenc in sek
         return timepasse < 0.2;
     }
 
+    /**
+     * Animation images Path
+     */
 
     playAnimation(images) {
         let i = this.currentImage % images.length; // let i = 0 % 6
@@ -94,6 +107,9 @@ class MovableObject extends DrawableObject {
         this.currentImage++
     }
 
+    /**
+     * ability to move to the right side
+     */
     moveRight() {
 
         this.x += this.speed;
@@ -101,21 +117,33 @@ class MovableObject extends DrawableObject {
 
     }
 
+    /**
+     * ability to move to the left side
+     */
+
     moveLeft() {
-        this.x -= this.speed;
+            this.x -= this.speed;
 
 
-    }
-
+        }
+        /**
+         * ability to jump with a specific speed in y-direction
+         * @returns speedY = 30
+         */
 
     jump() {
         this.speedY = 30;
     }
 
+    /**
+     * give the filter of WorldObject. (ui.js)
+     * @param {*} name 
+     */
     constructor(name) {
         super();
         if (name != undefined) {
             let moveOb = WorldObject().filter(em => em.name == name)[0]
+            console.log('moveOb', moveOb)
             super.loadImage(moveOb.img);
             this.loadImages(moveOb.images);
             this.x = moveOb.x;

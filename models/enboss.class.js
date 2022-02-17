@@ -1,9 +1,15 @@
+/**
+ * class endboss for defining all imformation as an extention of movableObjects
+ */
+
+
 class Endboss extends MovableObject {
 
 
     height = 400;
     width = 250;
     y = 70;
+
 
 
 
@@ -37,21 +43,25 @@ class Endboss extends MovableObject {
     ];
 
 
-
+    /**
+     * loads all images runs the animations
+     */
 
     constructor() {
-        super().loadImage('img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G5.png');
-        this.loadImages(this.imagesWalking);
-        this.loadImages(this.imgagesDead);
-        this.loadImages(this.imagesHurt);
-        this.animate();
-        this.x = 2400;
+            super().loadImage('img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G5.png');
+            this.loadImages(this.imagesWalking);
+            this.loadImages(this.imgagesDead);
+            this.loadImages(this.imagesHurt);
+            this.animate();
+            this.x = 2400;
 
 
 
 
-    }
-
+        }
+        /**
+         * this method defines the animations for the endboss. If something happend the endboss makes a spezial animation
+         */
     animate() {
 
         setInterval(() => {
@@ -60,6 +70,7 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.imgagesDead);
             } else if (this.isHurt()) {
                 this.playAnimation(this.imagesHurt);
+                this.x;
             } else {
                 this.playAnimation(this.imagesWalking);
             }

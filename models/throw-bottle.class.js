@@ -1,3 +1,7 @@
+/**
+ * defines all objects with the ability to throw
+ */
+
 class ThrowBottle extends MovableObject {
 
     width = 50;
@@ -12,6 +16,12 @@ class ThrowBottle extends MovableObject {
 
     ];
 
+    /**
+     * sets objects on canvas
+     * @param {number} x coordinat in x-direction
+     * @param {number} y coordinat in y-direction
+     * @param {number} y  otherDirection
+     */
     constructor(x, y, otherDirection) {
         super().loadImage('img/6.botella/1.Marcador.png');
         this.loadImages(this.imagesbottels);
@@ -22,9 +32,10 @@ class ThrowBottle extends MovableObject {
 
     }
 
-
+    /**
+     * method discribes a function
+     */
     throw () {
-
         this.speedY = 30;
         this.applyGravity();
         setInterval(() => {

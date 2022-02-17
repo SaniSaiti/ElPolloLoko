@@ -1,3 +1,7 @@
+/**
+ * shows if a key is hit or not
+ */
+
 class Keyboard {
 
     left = false;

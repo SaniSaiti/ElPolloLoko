@@ -1,8 +1,16 @@
+/**
+ * sets the design of the game. Here are all enemies, clouds, background objects, bottles and coins listet.
+ */
+
 let level1;
 
 function getLevel1() {
     return new Level(
         [
+            new Chicken(),
+            new Chicken(),
+            new Chicken(),
+            new Chicken(),
             new Chicken(),
             new Chicken(),
             new Chicken(),
@@ -55,7 +63,13 @@ function getLevel1() {
             new MovableObject('Bottle'),
             new MovableObject('Bottle'),
             new MovableObject('Bottle'),
+            new MovableObject('Bottle'),
+            new MovableObject('Bottle'),
+            new MovableObject('Bottle'),
+            new MovableObject('Bottle'),
             new MovableObject('Bottle')
+
+
 
 
 

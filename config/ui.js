@@ -45,7 +45,26 @@ StatusBars = [{
         "height": 60,
         "width": 200,
         "percentage": 0
-    }
+    },
+
+    {
+        "name": "LifeBarBoss",
+        "img": "img/7.Marcadores/Barra/Marcador vida/azul/0_.png",
+        "images": ["img/7.Marcadores/Barra/Marcador vida/azul/0_.png",
+            "img/7.Marcadores/Barra/Marcador vida/azul/20_.png",
+            "img/7.Marcadores/Barra/Marcador vida/azul/40_.png",
+            "img/7.Marcadores/Barra/Marcador vida/azul/60_.png",
+            "img/7.Marcadores/Barra/Marcador vida/azul/80_.png",
+            "img/7.Marcadores/Barra/Marcador vida/azul/100_.png"
+        ],
+        "x": 2450,
+        "y": 0,
+        "height": 60,
+        "width": 200,
+        "percentage": 100
+    },
+
+
 
 ]
 

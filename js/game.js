@@ -71,6 +71,15 @@ window.addEventListener('keyup', (event) => {
 
 });
 
+function winGame() {
+    document.getElementById('win').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
+    starGame();
+    // document.getElementById('img').classList.add('d-none'); 
+
+
+
+}
 
 function starGame2() {
     document.getElementById('gameover').classList.add('d-none');

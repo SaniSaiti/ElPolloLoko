@@ -1,3 +1,8 @@
+/**
+ * sets all information for the class character as an extencion of MovableObject
+ */
+
+
 class Character extends MovableObject {
 
 
@@ -53,6 +58,9 @@ class Character extends MovableObject {
     jump_Sound = new Audio('audio/jump.mp3');
 
 
+    /**
+     * sets all relevant information
+     */
 
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
@@ -65,6 +73,10 @@ class Character extends MovableObject {
 
 
     }
+
+    /**
+     * collection of all methods that have animations in it
+     */
 
     animate() {
 
@@ -112,6 +124,15 @@ class Character extends MovableObject {
 
 
 
+    }
+
+
+
+    isOverHead(enemy) {
+
+        let result = this.y + this.height - enemy;
+        console.log('result ', result);
+        return this.y + this.height - enemy.y <= 20
     }
 
 
