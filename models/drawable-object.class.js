@@ -37,7 +37,7 @@ class DrawableObject {
 
     /**
      * draws frame around specific objects. This is just for development and not in the real game
-     * @param {*} ctx I have no idea what that is
+     * @param {*} ctx 
      */
 
     drawFrame(ctx) {
@@ -45,11 +45,11 @@ class DrawableObject {
         if (this instanceof Character || this instanceof Chicken /*|| this instanceof Bottle || this instanceof Coin || this instanceof ThrowBottle*/ ) {
 
 
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
+            // ctx.beginPath();
+            // ctx.lineWidth = '5';
+            // ctx.strokeStyle = 'blue';
+            // ctx.rect(this.x, this.y, this.width, this.height);
+            // ctx.stroke();
         }
     }
 
